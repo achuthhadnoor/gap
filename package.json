@@ -1,0 +1,72 @@
+{
+  "name": "gap",
+  "version": "0.0.1",
+  "description": "A simple app to add gaps in the menubar between menubar items",
+  "main": "index.js",
+  "repository": "https://github.com/achuthhadnoor/gap",
+  "author": "achuth hadnoor",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "electron .",
+    "dist": "rm -rf dist && electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.3",
+    "electron-builder-notarize": "^1.5.1"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.6",
+    "electron-store": "^8.1.0",
+    "electron-util": "^0.17.2"
+  },
+  "build": {
+    "appId": "com.achuth.gap",
+    "afterSign": "electron-builder-notarize",
+    "protocols": {
+      "name": "gap",
+      "schemes": [
+        "gap"
+      ]
+    },
+    "files": [
+      "node_modules",
+      "build",
+      "index.js"
+    ],
+    "mac": {
+      "electronUpdaterCompatibility": ">=2.16",
+      "category": "public.app-category.productivity",
+      "minimumSystemVersion": "10.12.0",
+      "darkModeSupport": true,
+      "hardenedRuntime": true,
+      "extendInfo": {
+        "NSUserNotificationAlertStyle": "alert"
+      },
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64",
+          "arm64"
+        ]
+      }
+    },
+    "dmg": {
+      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "iconSize": 160,
+      "contents": [
+        {
+          "x": 120,
+          "y": 190
+        },
+        {
+          "x": 400,
+          "y": 190,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }
+}

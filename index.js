@@ -19,7 +19,7 @@ const config = store.get("gap-config") || {
 let trays = store.get("gap-trays") || [
   {
     id: Math.random() * 3,
-    type: " | ",
+    type: "|",
   },
 ];
 console.log("====================================");
@@ -39,7 +39,7 @@ const createTrayIcon = (trayConfig) => {
     {
       label: "New Gap",
       click: () => {
-        let newTray = { id: Math.random() * 3, type: " | " };
+        let newTray = { id: Math.random() * 3, type: "|" };
         trays.push(newTray);
         createTrayIcon(newTray);
         store.set("gap-trays", trays);
@@ -81,10 +81,10 @@ const createTrayIcon = (trayConfig) => {
     {
       label: "|",
       click: () => {
-        tray.setTitle(" | ");
+        tray.setTitle("|");
         let trayItems = trays.map((t) => {
           if (t.id === trayConfig.id) {
-            return { ...t, type: " | " };
+            return { ...t, type: "|" };
           }
           return t;
         });
@@ -95,10 +95,10 @@ const createTrayIcon = (trayConfig) => {
     {
       label: "-",
       click: () => {
-        tray.setTitle(" - ");
+        tray.setTitle("-");
         let trayItems = trays.map((t) => {
           if (t.id === trayConfig.id) {
-            return { ...t, type: " - " };
+            return { ...t, type: "-" };
           }
           return t;
         });
@@ -123,7 +123,7 @@ const createTrayIcon = (trayConfig) => {
     {
       label: "⏤",
       click: () => {
-        tray.setTitle(" ⏤ ");
+        tray.setTitle("⏤");
         let trayItems = trays.map((t) => {
           if (t.id === trayConfig.id) {
             return { ...t, type: " ⏤ " };
